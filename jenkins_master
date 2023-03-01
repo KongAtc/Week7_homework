@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                 def props = readFile(file: 'data.txt')
-                def line = data.readLines()
+                def line = props.readLines()
 
                 echo 'Start Trigger to send name and age to slave'
                 build job: 'jenkins_slave', parameters: [string(name: 'NAME', value: lines.get(0)), string(name: 'Ages', value: lines.get(1))]

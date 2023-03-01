@@ -11,9 +11,9 @@ pipeline {
 
         stage('Read file'){
             steps {
-                def props = readJSON text: '{ "key": "value" }'
-                assert props['key'] == 'value'
-                assert props.key == 'value'
+                def props = readJSON file: '/data.json'
+                    assert props['attr1'] == 'One'
+                    assert props.attr1 == 'One'
             }
         }
 

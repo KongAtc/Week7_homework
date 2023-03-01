@@ -9,6 +9,14 @@ pipeline {
             }
         }
 
+        stage('Read file'){
+            steps {
+                def props = readJSON text: '{ "key": "value" }'
+                assert props['key'] == 'value'
+                assert props.key == 'value'
+            }
+        }
+
         stage('Tigger the Slave Jobs') {
             steps {
                 echo 'Start Trigger to send name and age to slave'
